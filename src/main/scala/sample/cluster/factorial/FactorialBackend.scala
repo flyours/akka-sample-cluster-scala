@@ -14,7 +14,7 @@ class FactorialBackend extends Actor with ActorLogging {
 
   import context.dispatcher
 
-  def receive: PartialFunction[Any, Unit] = {
+  def receive = {
     case (n: Int) =>
       Future(factorial(n)) map { result => (n, result) } pipeTo sender()
   }
